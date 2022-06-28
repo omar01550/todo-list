@@ -57,8 +57,8 @@ function addTasksToPage(arr){
      let divTask=`
      <div class="task" data-check=${arr[0].completed} id=${arr[i].id} data-completed=${arr[i].completed}>
          <div class="content">
-             <div class="check">
-                  <div class="check-icon" id=check+${arr[i].id} style=${arr[i].completed==true?"left:0;top:0":"left:-110%;top:-110%"}></div>
+             <div class="check" style=${arr[i].completed == true?"background-image:linear-gradient(60deg,crimson,green);":"background-image:transparent;"}>
+
              </div>
              <p class="text">${arr[i].content}</p>
          </div>
@@ -217,13 +217,13 @@ document.documentElement.addEventListener("click",function(e){
 //check
 
 document.documentElement.addEventListener("click",(e)=>{
-    if(e.target.classList.contains("check") || e.target.classList.contains("check-icon")) {
+    if(e.target.classList.contains("check")) {
        let id=e.target.parentNode.parentNode.id;
-       let checkIcon=document.getElementById("check+"+id);
+
 
        for(let i=0;i<arr.length;i++){
           if(arr[i].id ==id){
-             if(arr[i].completed){
+             if(arr[i].completed == true){
                 arr[i].completed=false;
                 addTasksToPage(arr);
              }else{
