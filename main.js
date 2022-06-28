@@ -10,12 +10,14 @@
 //global vars
 let form=document.querySelector("form");
 let input=document.querySelector("form input");
-let tasksDiv=document.querySelector(".tasks")
+let tasksDiv=document.querySelector(".tasks");
+
+
 
 
 let arr=[];
 
-addTasksToPage(arr)
+//addTasksToPage(arr)
 form.onsubmit=function(e){
   e.preventDefault();
 
@@ -24,7 +26,7 @@ form.onsubmit=function(e){
     let task=createTask(value)
     addTaskToArray(task,arr);
     addArrayToLocalStorage(arr);
-    addTasksToPage(arr)
+    addTasksToPage(arr);
     input.value="";
   }
 }
@@ -53,10 +55,10 @@ function addTasksToPage(arr){
   tasksDiv.innerHTML="";
    for(let i=0;i<arr.length;i++){
      let divTask=`
-     <div class="task" data-check=${arr[0].completed} id=${arr[i].id}>
+     <div class="task" data-check=${arr[0].completed} id=${arr[i].id} data-completed=${arr[i].completed}>
          <div class="content">
-             <div class="ckeck">
-                  <div class="check-icon"></div>
+             <div class="check">
+                  <div class="check-icon" id=check+${arr[i].id} style=${arr[i].completed==true?"left:0;top:0":"left:-110%;top:-110%"}></div>
              </div>
              <p class="text">${arr[i].content}</p>
          </div>
@@ -66,9 +68,24 @@ function addTasksToPage(arr){
             <i class="fa fa-trash"></i>
 
          </div>
+
+         <div class="links">
+             <span class="tasks-count"></span>
+             <div class="controls">
+                 <a href="#" class="all">all</a>
+                 <a href="#" class="active-page active">active</a>
+                 <a href="#" class="completed">completed</a>
+             </div>
+             <span class="clear-all">clear all</span>
+         </div>
+
      </div>
      `
+     //count tasks
+
+
      tasksDiv.innerHTML+=divTask;
+
    }
 }
 
@@ -91,6 +108,7 @@ function deleteTaks(){
 
 function updateTask(){
   document.documentElement.addEventListener("click",function(e){
+     input.focus();
      if(e.target.classList.contains("fa-pen")){
         let id=e.target.parentNode.parentNode.id;
         for(let i=0;i<arr.length;i++){
@@ -102,7 +120,8 @@ function updateTask(){
            }
         }
      }
-  })
+  });
+
 }
 
 updateTask();
@@ -115,9 +134,10 @@ deleteTaks();
 let mood=document.querySelector(".mood");
 
 mood.onclick=function(){
+
+    changeMood();
     mood.classList.toggle("fa-moon");
     mood.classList.toggle("fa-sun");
-    changeMood();
 }
 
 function changeMood(){
@@ -131,3 +151,87 @@ function changeMood(){
      document.documentElement.style.setProperty("--task-color","#25273c");
    }
 }
+
+
+
+//clear all
+document.documentElement.addEventListener("click",function(e){
+    if(e.target.classList.contains("clear-all")){
+       arr.length=0;
+       addArrayToLocalStorage(arr);
+       addTasksToPage(arr);
+    }
+})
+
+// onclick on check ;
+//get parent;
+// get child;
+
+//if parent data completed == true
+    //inner left =0 top =0;
+    // arr[i].id .completed =true
+    //console.log(arr);
+//else
+   //inner left -110% top -110%
+   // arr[i].id .completed =false;
+   //console.log(arr);
+
+
+
+
+
+
+/*
+//check function
+
+document.documentElement.addEventListener("click",function(e){
+    if(e.target.classList.contains("check")){
+         let id=e.target.parentNode.parentNode.id;
+         let parent=document.getElementById(id);
+         let checkIcon=document.getElementById(`check+${id}`)
+          // add check to array
+         checkIcon.style.left="0";
+         checkIcon.style.top="0";
+         for(let i=0;i<arr.length;i++){
+           if(arr[i].id ==id){
+              if(parent.dataset.completed){
+                arr[i].completed=false;
+                addArrayToLocalStorage(arr);
+                addTasksToPage(arr);
+                console.log(arr[i]);
+              }else{
+                arr[i].completed=true;
+                addArrayToLocalStorage(arr);
+                addTasksToPage(arr);
+                console.log(arr[i]);
+              }
+              break;
+           }
+         }
+
+    }
+});
+
+*/
+
+//check
+
+document.documentElement.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("check") || e.target.classList.contains("check-icon")) {
+       let id=e.target.parentNode.parentNode.id;
+       let checkIcon=document.getElementById("check+"+id);
+
+       for(let i=0;i<arr.length;i++){
+          if(arr[i].id ==id){
+             if(arr[i].completed){
+                arr[i].completed=false;
+                addTasksToPage(arr);
+             }else{
+               arr[i].completed=true;
+               addTasksToPage(arr);
+             }
+          }
+       }
+
+    }
+})

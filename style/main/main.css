@@ -108,7 +108,8 @@ header {
         color: var(--text-color);
         background-color: var(--task-color);
         padding: 20px;
-        border-bottom: 1px solid #f0f0f0; }
+        border-bottom: 1px solid #f0f0f0;
+        position: relative; }
         .down .todo .tasks .task .content {
           display: -webkit-box;
           display: -ms-flexbox;
@@ -120,17 +121,25 @@ header {
               -ms-flex-align: center;
                   align-items: center; }
           .down .todo .tasks .task .content .check {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             border: 2px solid white;
             border-radius: 50%;
             cursor: pointer;
             position: relative;
-            background-color: red; }
+            overflow: hidden; }
+            .down .todo .tasks .task .content .check .check-icon {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-image: linear-gradient(60deg, #57ddff, #c058f3);
+              left: -112%;
+              top: -110%; }
           .down .todo .tasks .task .content p {
-            margin-left: 40px;
-            width: 70%;
-            background-color: red; }
+            margin-left: 20px;
+            width: 80%;
+            white-space: nowrap;
+            font-size: 1.7rem; }
         .down .todo .tasks .task .icons {
           width: 40px;
           display: -webkit-box;
@@ -142,9 +151,46 @@ header {
           -webkit-box-align: center;
               -ms-flex-align: center;
                   align-items: center; }
+          .down .todo .tasks .task .icons i:hover {
+            color: #7f36ea; }
         .down .todo .tasks .task i {
           cursor: pointer; }
         .down .todo .tasks .task .fa-pen {
           margin-right: 20px; }
+        .down .todo .tasks .task .links {
+          position: absolute;
+          left: 0;
+          bottom: -40px;
+          width: 100%;
+          padding: 10px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+                  justify-content: space-between;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          background-color: var(--task-color); }
+          .down .todo .tasks .task .links span {
+            display: block; }
+          .down .todo .tasks .task .links > * {
+            cursor: pointer; }
+          .down .todo .tasks .task .links div {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            width: 150px; }
+            .down .todo .tasks .task .links div .active {
+              color: var(--active-color); }
+            .down .todo .tasks .task .links div a {
+              color: var(--text-color); }
 
 /*# sourceMappingURL=main.css.map */
