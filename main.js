@@ -17,7 +17,11 @@ let tasksDiv=document.querySelector(".tasks");
 
 let arr=[];
 
-//addTasksToPage(arr)
+if(localStorage.tasksTodo != "undefined"){
+  arr=JSON.parse(localStorage.tasksTodo)
+}
+
+addTasksToPage(arr)
 form.onsubmit=function(e){
   e.preventDefault();
 
@@ -28,6 +32,7 @@ form.onsubmit=function(e){
     addArrayToLocalStorage(arr);
     addTasksToPage(arr);
     input.value="";
+
   }
 }
 
@@ -226,9 +231,11 @@ document.documentElement.addEventListener("click",(e)=>{
              if(arr[i].completed == true){
                 arr[i].completed=false;
                 addTasksToPage(arr);
+                addArrayToLocalStorage(arr)
              }else{
                arr[i].completed=true;
                addTasksToPage(arr);
+               addArrayToLocalStorage(arr);
              }
           }
        }
