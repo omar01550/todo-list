@@ -11,20 +11,14 @@
 let form=document.querySelector("form");
 let input=document.querySelector("form input");
 let tasksDiv=document.querySelector(".tasks");
-
-
-
-
 let arr=[];
 
-if(localStorage.tasksTodo != "undefined"){
+if(localStorage.tasksTodo != "undefined" && localStorage.tasksTodo != undefined){
   arr=JSON.parse(localStorage.tasksTodo)
 }
-
 addTasksToPage(arr)
 form.onsubmit=function(e){
   e.preventDefault();
-
   if(input.value != ""){
     let value=input.value;
     let task=createTask(value)
@@ -35,8 +29,6 @@ form.onsubmit=function(e){
 
   }
 }
-
-
 //functions
 function createTask(value){
    return {
@@ -50,12 +42,9 @@ function createTask(value){
 function addTaskToArray(task,arr){
    arr.push(task);
 }
-
-
 function addArrayToLocalStorage(arr){
   localStorage.setItem("tasksTodo",JSON.stringify(arr));
 }
-
 function addTasksToPage(arr){
   tasksDiv.innerHTML="";
    for(let i=0;i<arr.length;i++){
@@ -87,14 +76,10 @@ function addTasksToPage(arr){
      </div>
      `
      //count tasks
-
-
      tasksDiv.innerHTML+=divTask;
 
    }
 }
-
-
 function deleteTaks(){
   document.documentElement.addEventListener("click",function(e){
      if(e.target.classList.contains("fa-trash")){
@@ -110,7 +95,6 @@ function deleteTaks(){
      }
   })
 }
-
 function updateTask(){
   document.documentElement.addEventListener("click",function(e){
      input.focus();
@@ -128,23 +112,15 @@ function updateTask(){
   });
 
 }
-
 updateTask();
-
 deleteTaks();
-
-
 //change mood
-
 let mood=document.querySelector(".mood");
-
 mood.onclick=function(){
-
     changeMood();
     mood.classList.toggle("fa-moon");
     mood.classList.toggle("fa-sun");
 }
-
 function changeMood(){
    if(mood.classList.contains("fa-sun")){
       document.documentElement.style.setProperty("--seconary-color","#f6f6f6");
@@ -156,9 +132,6 @@ function changeMood(){
      document.documentElement.style.setProperty("--task-color","#25273c");
    }
 }
-
-
-
 //clear all
 document.documentElement.addEventListener("click",function(e){
     if(e.target.classList.contains("clear-all")){
@@ -171,7 +144,6 @@ document.documentElement.addEventListener("click",function(e){
 // onclick on check ;
 //get parent;
 // get child;
-
 //if parent data completed == true
     //inner left =0 top =0;
     // arr[i].id .completed =true
@@ -224,8 +196,6 @@ document.documentElement.addEventListener("click",function(e){
 document.documentElement.addEventListener("click",(e)=>{
     if(e.target.classList.contains("check")) {
        let id=e.target.parentNode.parentNode.id;
-
-
        for(let i=0;i<arr.length;i++){
           if(arr[i].id ==id){
              if(arr[i].completed == true){
