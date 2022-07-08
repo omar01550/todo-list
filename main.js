@@ -51,7 +51,7 @@ function addTasksToPage(arr){
      let divTask=`
      <div class="task" data-check=${arr[0].completed} id=${arr[i].id} data-completed=${arr[i].completed}>
          <div class="content">
-             <div class="check" style=${arr[i].completed == true?"background-image:linear-gradient(60deg,crimson,green);":"background-image:transparent;"}>
+             <div class="check" style=${arr[i].completed == true?"background-image:linear-gradient(60deg,#673ab7,#9e9e9ef2);":"background-image:transparent;"}>
 
              </div>
              <p class="text">${arr[i].content}</p>
