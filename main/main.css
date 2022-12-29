@@ -1,3 +1,233 @@
+:root {
+  --active-color:hsl(220, 98%, 61%);
+  --seconary-color:#181824;
+  --text-color:white;
+  --check:linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --task-color:#25273c;
+  --dark-blue:hsl(235, 21%, 11%); }
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+ul {
+  list-style-type: none; }
+
+a {
+  text-decoration: none; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  font-family: 'Cairo', sans-serif;
+  font-family: 'Poppins', sans-serif; }
+
+i {
+  cursor: pointer; }
+
+.container {
+  width: 60%;
+  margin: 0 auto; }
+  @media (max-width: 767px) {
+    .container {
+      width: 90%; } }
+
+.page {
+  width: 100%;
+  height: 100%; }
+
+.up {
+  width: 100%;
+  height: 30%;
+  padding-top: 60px;
+  background-image: url("../../images/bg-desktop-dark.jpg"); }
+
+header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  header .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem; }
+  header i {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold; }
+
+.down {
+  width: 100%;
+  min-height: 70%;
+  background-color: var(--seconary-color);
+  position: relative; }
+  .down .todo {
+    width: 100%;
+
+    -webkit-transform: translateY(-70px);
+            transform: translateY(-70px); }
+    .down .todo form {
+      width: 100%; }
+      .down .todo form input {
+        width: 100%;
+        font-size: 2rem;
+        padding: 10px;
+        background-color: var(--task-color);
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        color: var(--text-color); }
+        @media (max-width: 767px) {
+          .down .todo form input {
+            font-size: 1rem; } }
+    .down .todo .tasks {
+      width: 100%;
+      min-height: 0px;
+      margin-top: 30px;
+      color: red; }
+      .down .todo .tasks .task {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        color: var(--text-color);
+        background-color: var(--task-color);
+        padding: 20px;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative; }
+        .down .todo .tasks .task .content {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: start;
+              -ms-flex-pack: start;
+                  justify-content: flex-start;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center; }
+          .down .todo .tasks .task .content .check-task {
+            width: 25px;
+            height: 25px;
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden; }
+            .down .todo .tasks .task .content .check .check-icon {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-image: linear-gradient(60deg, #57ddff, #c058f3);
+              left: -112%;
+              top: -110%; }
+          .down .todo .tasks .task .content p {
+            margin-left: 20px;
+            width: 80%;
+            white-space: nowrap;
+            font-size: 1.7rem; }
+        .down .todo .tasks .task .icons {
+          width: 40px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+                  justify-content: space-between;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center; }
+          .down .todo .tasks .task .icons i:hover {
+            color: #7f36ea; }
+        .down .todo .tasks .task i {
+          cursor: pointer; }
+        .down .todo .tasks .task .fa-pen {
+          margin-right: 20px; }
+        .down .links {
+          position: absolute;
+          left: 0;
+          bottom: -40px;
+          width: 100%;
+          padding: 10px;
+          margin-top: 40px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+              -ms-flex-pack: justify;
+                  justify-content: space-between;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          background-color: var(--task-color); }
+          .down .links span {
+            display: block; }
+          .down .links > * {
+            cursor: pointer; }
+          .down .links div {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            width: 190px; }
+            .down .links div .active {
+              color: var(--active-color); }
+            .down .links div a {
+              color: var(--text-color); }
+
+              .down .todo .completed-section{
+                 color: white;
+                 width: 100%;
+                 min-height: 20vh;
+                 background-color: var(--task-color); }
+              }
+
+              .clear-all{
+                  color: var(--text-color);
+               }
+
+              .hidden{
+                 display: none;
+              }
 
 
+    .task-complete{
+       margin-top: 20px;
+       width: 100%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       font-size: 1.7rem;
+       padding: 20px;
+       border-bottom: 1px solid #f0f0f0;
+    }
+
+    .clear-all{
+       color: var(--text-color);
+    }
 /*# sourceMappingURL=main.css.map */
